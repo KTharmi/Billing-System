@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +26,13 @@ Route::group(['middleware' => ['auth','admin']],function(){
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
+
+    Route::get('/role-register', 
+    [App\Http\Controllers\Admin\DashboardController::class, 'registered']);
+
+    Route::get('/role-edit/{id}', 
+    [App\Http\Controllers\Admin\DashboardController::class, 'registeredit']);
+
+    Route::put('/role-register-update/{{$users->$id }}',
+    [App\Http\Controllers\Admin\DashboardController::class, 'registerupdate']);
 });

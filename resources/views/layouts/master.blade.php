@@ -51,7 +51,7 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="./dashboard.html">
+            <a href="/dashboard">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
@@ -75,7 +75,7 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="/role-register">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
             </a>
@@ -143,16 +143,19 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons location_world"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
+                {{ Auth::user()->name }}
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
