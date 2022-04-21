@@ -10,6 +10,11 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title"> Registered Role</h4>
+        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 </div>
 <div class="card-body">
   <div class="table-responsive">
@@ -34,7 +39,14 @@
                       <td>{{$row->phone}}</td>
                       <td>{{$row->usertype}}</td>
                       <td><a href="/role-edit/{{$row->id}}" class="btn btn-block btn-success btn-sm">Edit</a></td>
-                      <td><a href="/role-delete/{{$row->id}}" class="btn btn-block btn-danger btn-sm">Delete</a></td>
+                      <td>
+                        <form action="/role-delete/{{$row->id}}" method ="post">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                          <input type ="hidden" name="id" value="{{$row->id}}">
+                              <button type ="submit" class="btn btn-block btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
                     </tr>
                     @endforeach
                   </tbody>

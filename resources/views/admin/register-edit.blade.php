@@ -15,28 +15,29 @@
               <!-- /.card-header -->
               <!-- form start -->
               <div class ="row">
-  <div class ="col-md-6">
-              <form action ="/role-register-update/{{$users->$id }}" method="POST">
-                  {{ csrf_field() }}
-                  {{ method_field('PUT') }}
+              <div class ="col-md-6">
+              <form action ="/role-register-update/{{$users->id }}" method="POST">
+              {{ csrf_field() }}
+               
                 <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputName1">Name</label>
-                    <input type="name" class="form-control" id="exampleInputName1" placeholder="{{$users->name}}">
+                    <label>Name</label>
+                    <input type="text" name="username" value="{{$users->name}}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{$users->email}}">
+                    <label>Email address</label>
+                    <input type="email" name="email" value="{{$users->email}}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPhone1">Phone No</label>
-                    <input type="phone" class="form-control" id="exampleInputPhone1" placeholder="{{$users->phone}}">
+                    <label>Phone No</label>
+                    <input type="phone" name="phone" value="{{$users->phone}}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Give Role</label>
-                    <select name="usertype">
+                    <select name="usertype" class="form-control">
                         <option value="admin">Admin</option>
                         <option value="vendor">Vendor</option>
+                        <option value="none">None</option>
                     </select>
                   </div>
                 </div>
